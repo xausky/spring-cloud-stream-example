@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:mysql://base_mysql_1:3306/stream
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: create-drop
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: kafka_broker_1
+          zkNodes: kafka_zookeeper_1
+      bindings:
+        order-stock-channel-input:
+          destination: order-stock-channel
+          group: order
+        order-stock-channel-output:
+          destination: order-stock-channel
+          group: order
+server:
+  port: 4041

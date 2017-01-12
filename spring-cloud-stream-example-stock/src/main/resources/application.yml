@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: kafka_broker_1
+          zkNodes: kafka_zookeeper_1
+      bindings:
+        order-stock-channel-input:
+          destination: order-stock-channel
+          group: stocks
+        order-stock-channel-output:
+          destination: order-stock-channel
+          group: stock
+  redis:
+    host: base_redis_1
+
+server:
+  port: 4040
